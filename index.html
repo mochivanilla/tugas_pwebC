@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+
+<body id="body">
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    success
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="navbar-logo"></div>
+            <ul class="navbar-menu-list">
+                <li>Pelajaran</li>
+                <li>Kelas</li>
+                <li>Forum</li>
+            </ul>
+        </div>
+
+        <div class="navbar-right">
+            <div class="navbar-pengaturan">
+                Pengaturan
+            </div>
+            <div class="navbar-triangle"></div>
+        </div>
+    </div>
+
+    <div class="selamatdatang-container">
+        <div class="selamatdatang-container-atas">
+            <div class="selamatdatang-salam">
+                SELAMAT DATANG
+            </div>
+            <div class="selamatdatang-gambar-atas">
+                <img src="img/Halaman akun 2-01.png" width="500" height="300" alt="gambar diskusi">
+            </div>
+            <div class="selamatdatang-tawaran">
+                Untuk melanjutkan kelas, silahkan isi form dibawah ini
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="isian">
+            <h2>LOG IN</h2>
+            <form name="masuk">
+                <div class="isi-masuk">
+                    <input type="text" placeholder="username" id="username"><br>
+                    <input type="password" placeholder="password" id="password"><br>
+                    <h1>Lanjutkan</h1>
+                    <button type="submit" class="button" data-toggle='modal' onclick="login()">
+                        login    
+                    </button>
+                    <p id="error"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-logo"></div>
+        <ul class="footer-menu">
+            <li>Bantuan</li>
+            <li>FAQ</li>
+            <li>Hubungi Kami</li>
+        </ul>
+    </div>
+
+    <script>
+        let button = document.querySelector('button[data-toggle="modal"]');
+        let modal = document.querySelector('.modal');
+
+        button.addEventListener("click", function() {
+            event.preventDefault()
+        });
+
+        modal.addEventListener('click', function() {
+            this.classList.remove('show');
+            normalize()
+        });
+
+        modal.querySelector('.modal-content').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        function success() {
+            body.style.background = "green"
+        };
+
+        function normalize() {
+            body.style.background = "white"
+            document.getElementById("error").innerHTML = ""
+        };
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username == 'pweb_C' && password == 123123) {
+                document.getElementById("error").innerHTML = ""
+                modal.classList.add('show');
+                success()
+            } else {
+                document.getElementById("error").innerHTML = "<span style='color: red;'>invalid username or password</span>";
+            }
+        };
+    </script>
+</body>
+
+</html>
